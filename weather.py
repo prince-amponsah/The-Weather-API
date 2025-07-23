@@ -11,7 +11,7 @@ class City:
 
     def get_data(self):
         try:
-            results = requests.get(f"https://api.openweathermap.org/data/2.5/weather?units={self.units}&lat={self.latitude}&lon={self.longtitude}&appid=77faabcc09b1d617fb78f0462bb2ead8")
+            results = requests.get(f"https://api.openweathermap.org/data/2.5/weather?units={self.units}&lat={self.latitude}&lon={self.longtitude}&appid={self.token}")
 
         except:
              print("Error Loading Data from Url")
