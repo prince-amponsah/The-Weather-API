@@ -24,15 +24,26 @@ class City:
     def give_info(self):
         print(f"Current Temperature in Accra is Between: {self.temp_min}° and {self.temp_max}° degree Celcius")
 
+def main():
+    name = input('Enter your city name: ')
+    
+    try:
+        latitude = float(input('Enter your latitude (e.g., 5.5600): '))
+        longitude = float(input('Enter your longitude (e.g., -0.2050): '))
+    except ValueError:
+        print("[ERROR] Latitude and Longitude must be numbers.")
+        return
 
-name_city = input('Please, Enter Your City \n')
-latitude = input('Enter Your Latitude \n')
-longtitude = input('Enter your Longtitude \n')
-unit = input('Please, Enter Your Unit \n')
-token = input('Please, Enter Your Token \n')
-my_city = City(name_city, latitude, longtitude,unit, token)
-my_city.give_info()
-        
+    units = input("Enter unit (metric for °C, imperial for °F) [default: metric]: ") or "metric"
+    token = input('Enter your OpenWeather API token: ')
+
+    city = City(name, latitude, longitude, units, token)
+    
+    if city.get_data():
+        city.give_info()
+
+if __name__ == "__main__":
+    main()
 
 
 
